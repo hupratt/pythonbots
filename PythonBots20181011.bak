@@ -1,0 +1,1648 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.10
+-- Dumped by pg_dump version 9.6.10
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_group (
+    id integer NOT NULL,
+    name character varying(80) NOT NULL
+);
+
+
+ALTER TABLE public.auth_group OWNER TO postgres;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_group_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_group_id_seq OWNED BY public.auth_group.id;
+
+
+--
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_group_permissions (
+    id integer NOT NULL,
+    group_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_group_permissions OWNER TO postgres;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_group_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_permissions_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_group_permissions_id_seq OWNED BY public.auth_group_permissions.id;
+
+
+--
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_permission (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    content_type_id integer NOT NULL,
+    codename character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.auth_permission OWNER TO postgres;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_permission_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_permission_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_permission_id_seq OWNED BY public.auth_permission.id;
+
+
+--
+-- Name: comments_comment; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.comments_comment (
+    id integer NOT NULL,
+    content text NOT NULL,
+    "timestamp" timestamp with time zone NOT NULL,
+    object_id integer,
+    content_type_id integer,
+    user_id integer NOT NULL,
+    CONSTRAINT comments_comment_object_id_check CHECK ((object_id >= 0))
+);
+
+
+ALTER TABLE public.comments_comment OWNER TO postgres;
+
+--
+-- Name: comments_comment_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.comments_comment_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.comments_comment_id_seq OWNER TO postgres;
+
+--
+-- Name: comments_comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.comments_comment_id_seq OWNED BY public.comments_comment.id;
+
+
+--
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.django_admin_log (
+    id integer NOT NULL,
+    action_time timestamp with time zone NOT NULL,
+    object_id text,
+    object_repr character varying(200) NOT NULL,
+    action_flag smallint NOT NULL,
+    change_message text NOT NULL,
+    content_type_id integer,
+    user_id integer NOT NULL,
+    CONSTRAINT django_admin_log_action_flag_check CHECK ((action_flag >= 0))
+);
+
+
+ALTER TABLE public.django_admin_log OWNER TO postgres;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.django_admin_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_admin_log_id_seq OWNER TO postgres;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.django_admin_log_id_seq OWNED BY public.django_admin_log.id;
+
+
+--
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.django_content_type (
+    id integer NOT NULL,
+    app_label character varying(100) NOT NULL,
+    model character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.django_content_type OWNER TO postgres;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.django_content_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_content_type_id_seq OWNER TO postgres;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.django_content_type_id_seq OWNED BY public.django_content_type.id;
+
+
+--
+-- Name: django_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.django_migrations (
+    id integer NOT NULL,
+    app character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    applied timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.django_migrations OWNER TO postgres;
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.django_migrations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_migrations_id_seq OWNER TO postgres;
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.django_migrations_id_seq OWNED BY public.django_migrations.id;
+
+
+--
+-- Name: django_session; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.django_session (
+    session_key character varying(40) NOT NULL,
+    session_data text NOT NULL,
+    expire_date timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.django_session OWNER TO postgres;
+
+--
+-- Name: posts_post; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.posts_post (
+    id integer NOT NULL,
+    title character varying(120) NOT NULL,
+    ipython character varying(100),
+    updated timestamp with time zone NOT NULL,
+    "timestamp" timestamp with time zone NOT NULL,
+    tag character varying(120) NOT NULL,
+    post_comments integer NOT NULL,
+    big boolean NOT NULL,
+    content text,
+    image character varying(100),
+    image2 character varying(100),
+    draft boolean NOT NULL,
+    user_id integer NOT NULL
+);
+
+
+ALTER TABLE public.posts_post OWNER TO postgres;
+
+--
+-- Name: posts_post_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.posts_post_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.posts_post_id_seq OWNER TO postgres;
+
+--
+-- Name: posts_post_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.posts_post_id_seq OWNED BY public.posts_post.id;
+
+
+--
+-- Name: posts_post_post_likes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.posts_post_post_likes (
+    id integer NOT NULL,
+    post_id integer NOT NULL,
+    customuser_id integer NOT NULL
+);
+
+
+ALTER TABLE public.posts_post_post_likes OWNER TO postgres;
+
+--
+-- Name: posts_post_post_likes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.posts_post_post_likes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.posts_post_post_likes_id_seq OWNER TO postgres;
+
+--
+-- Name: posts_post_post_likes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.posts_post_post_likes_id_seq OWNED BY public.posts_post_post_likes.id;
+
+
+--
+-- Name: posts_post_post_views; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.posts_post_post_views (
+    id integer NOT NULL,
+    post_id integer NOT NULL,
+    customuser_id integer NOT NULL
+);
+
+
+ALTER TABLE public.posts_post_post_views OWNER TO postgres;
+
+--
+-- Name: posts_post_post_views_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.posts_post_post_views_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.posts_post_post_views_id_seq OWNER TO postgres;
+
+--
+-- Name: posts_post_post_views_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.posts_post_post_views_id_seq OWNED BY public.posts_post_post_views.id;
+
+
+--
+-- Name: users_customuser; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_customuser (
+    id integer NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp with time zone,
+    is_superuser boolean NOT NULL,
+    username character varying(150) NOT NULL,
+    first_name character varying(30) NOT NULL,
+    last_name character varying(30) NOT NULL,
+    email character varying(254) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    date_joined timestamp with time zone NOT NULL,
+    bio text NOT NULL,
+    profile_pic character varying(100),
+    birth_date date,
+    location character varying(30) NOT NULL
+);
+
+
+ALTER TABLE public.users_customuser OWNER TO postgres;
+
+--
+-- Name: users_customuser_groups; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_customuser_groups (
+    id integer NOT NULL,
+    customuser_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE public.users_customuser_groups OWNER TO postgres;
+
+--
+-- Name: users_customuser_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_customuser_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_customuser_groups_id_seq OWNER TO postgres;
+
+--
+-- Name: users_customuser_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_customuser_groups_id_seq OWNED BY public.users_customuser_groups.id;
+
+
+--
+-- Name: users_customuser_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_customuser_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_customuser_id_seq OWNER TO postgres;
+
+--
+-- Name: users_customuser_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_customuser_id_seq OWNED BY public.users_customuser.id;
+
+
+--
+-- Name: users_customuser_user_permissions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_customuser_user_permissions (
+    id integer NOT NULL,
+    customuser_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.users_customuser_user_permissions OWNER TO postgres;
+
+--
+-- Name: users_customuser_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_customuser_user_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_customuser_user_permissions_id_seq OWNER TO postgres;
+
+--
+-- Name: users_customuser_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_customuser_user_permissions_id_seq OWNED BY public.users_customuser_user_permissions.id;
+
+
+--
+-- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group ALTER COLUMN id SET DEFAULT nextval('public.auth_group_id_seq'::regclass);
+
+
+--
+-- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_group_permissions_id_seq'::regclass);
+
+
+--
+-- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission ALTER COLUMN id SET DEFAULT nextval('public.auth_permission_id_seq'::regclass);
+
+
+--
+-- Name: comments_comment id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments_comment ALTER COLUMN id SET DEFAULT nextval('public.comments_comment_id_seq'::regclass);
+
+
+--
+-- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log ALTER COLUMN id SET DEFAULT nextval('public.django_admin_log_id_seq'::regclass);
+
+
+--
+-- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_content_type ALTER COLUMN id SET DEFAULT nextval('public.django_content_type_id_seq'::regclass);
+
+
+--
+-- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('public.django_migrations_id_seq'::regclass);
+
+
+--
+-- Name: posts_post id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post ALTER COLUMN id SET DEFAULT nextval('public.posts_post_id_seq'::regclass);
+
+
+--
+-- Name: posts_post_post_likes id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_likes ALTER COLUMN id SET DEFAULT nextval('public.posts_post_post_likes_id_seq'::regclass);
+
+
+--
+-- Name: posts_post_post_views id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_views ALTER COLUMN id SET DEFAULT nextval('public.posts_post_post_views_id_seq'::regclass);
+
+
+--
+-- Name: users_customuser id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser ALTER COLUMN id SET DEFAULT nextval('public.users_customuser_id_seq'::regclass);
+
+
+--
+-- Name: users_customuser_groups id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups ALTER COLUMN id SET DEFAULT nextval('public.users_customuser_groups_id_seq'::regclass);
+
+
+--
+-- Name: users_customuser_user_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions ALTER COLUMN id SET DEFAULT nextval('public.users_customuser_user_permissions_id_seq'::regclass);
+
+
+--
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_group (id, name) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_group_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can add permission	2	add_permission
+5	Can change permission	2	change_permission
+6	Can delete permission	2	delete_permission
+7	Can add group	3	add_group
+8	Can change group	3	change_group
+9	Can delete group	3	delete_group
+10	Can add content type	4	add_contenttype
+11	Can change content type	4	change_contenttype
+12	Can delete content type	4	delete_contenttype
+13	Can add session	5	add_session
+14	Can change session	5	change_session
+15	Can delete session	5	delete_session
+16	Can add post	6	add_post
+17	Can change post	6	change_post
+18	Can delete post	6	delete_post
+19	Can add comment	7	add_comment
+20	Can change comment	7	change_comment
+21	Can delete comment	7	delete_comment
+22	Can add user	8	add_customuser
+23	Can change user	8	change_customuser
+24	Can delete user	8	delete_customuser
+\.
+
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 24, true);
+
+
+--
+-- Data for Name: comments_comment; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.comments_comment (id, content, "timestamp", object_id, content_type_id, user_id) FROM stdin;
+1	A test comment	2018-09-30 14:20:24.208044+01	47	6	1
+2	second test comment	2018-09-30 14:23:26.899248+01	47	6	9
+3	third test comment	2018-09-30 14:24:33.567162+01	47	6	8
+\.
+
+
+--
+-- Name: comments_comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.comments_comment_id_seq', 3, true);
+
+
+--
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2018-09-14 08:46:32.602231+01	46	Tryout	3		6	1
+2	2018-09-14 08:46:32.66709+01	45	Building a gaming-bot with a custom neural network Part 1	3		6	1
+3	2018-09-14 08:46:32.70139+01	44	Identify sentiment from streams of Reddit comments and display it as a user interface on Django	3		6	1
+4	2018-09-14 08:46:32.745503+01	43	Classifying amazon reviews with NLTK's Naive Bayes	3		6	1
+5	2018-09-14 08:46:32.779139+01	42	JIRA Series Part 1.3 - Exporting all issues from a JIRA project.	3		6	1
+6	2018-09-14 08:46:32.813637+01	41	JIRA Series Part 1.2 - Exporting all issues from a JIRA project	3		6	1
+7	2018-09-14 08:46:32.847937+01	40	Modeling temperatures and sales	3		6	1
+8	2018-09-14 08:46:32.879063+01	39	Setting up AWS S3 as a repository for your static files	3		6	1
+9	2018-09-14 08:46:32.909623+01	38	Building a recommender system Part III - pre-processing	3		6	1
+10	2018-09-14 08:46:32.94275+01	37	Building a recommender system Part II - scrape the reviews	3		6	1
+11	2018-09-14 08:46:32.975231+01	36	Imdb parser: building a recommender system	3		6	1
+12	2018-09-14 08:46:33.005162+01	35	Hosting, developing and deploying your website for free with Django and Raspberry PI	3		6	1
+13	2018-09-14 08:46:33.03502+01	34	Automate outlook messages	3		6	1
+14	2018-09-14 08:46:33.065154+01	33	Bug report and Windows scheduler	3		6	1
+15	2018-09-14 08:46:33.094922+01	32	Generate a timestamp and a name signature with a hotkey	3		6	1
+16	2018-09-14 08:46:33.124692+01	31	Hosting, developing and deploying your website for free with Django and Heroku	3		6	1
+17	2018-09-14 08:46:33.155205+01	30	Mass update custom date fields with JIRA's API	3		6	1
+18	2018-09-14 08:46:33.184713+01	29	Extracting and automating follow-up dashboards from JIRA	3		6	1
+19	2018-09-14 08:46:33.214791+01	28	Linkedin parser: shortlist potential candidates into your recruitment pipeline	3		6	1
+20	2018-09-14 08:46:33.245534+01	27	Extract, clean and build automated reportings with JIRA's API	3		6	1
+21	2018-09-14 08:46:33.274832+01	26	My first publication on Kaggle.com: Modeling recruitment decisions with scikit-learn	3		6	1
+22	2018-09-14 08:46:33.304547+01	25	How to create a Word document from an Excel file	3		6	1
+23	2018-09-26 17:22:30.04662+01	6		3		8	1
+24	2018-09-26 17:22:30.091618+01	5	hprattdo@gmail.com	3		8	1
+25	2018-09-26 17:22:30.110582+01	4	hprattdo@gmail.com	3		8	1
+26	2018-09-26 17:22:30.128573+01	3	hprattdo@gmail.com	3		8	1
+\.
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 26, true);
+
+
+--
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.django_content_type (id, app_label, model) FROM stdin;
+1	admin	logentry
+2	auth	permission
+3	auth	group
+4	contenttypes	contenttype
+5	sessions	session
+6	posts	post
+7	comments	comment
+8	users	customuser
+\.
+
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 8, true);
+
+
+--
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.django_migrations (id, app, name, applied) FROM stdin;
+1	contenttypes	0001_initial	2018-09-13 12:44:23.186243+01
+2	contenttypes	0002_remove_content_type_name	2018-09-13 12:44:23.467272+01
+3	auth	0001_initial	2018-09-13 12:44:24.608687+01
+4	auth	0002_alter_permission_name_max_length	2018-09-13 12:44:24.820563+01
+5	auth	0003_alter_user_email_max_length	2018-09-13 12:44:25.074386+01
+6	auth	0004_alter_user_username_opts	2018-09-13 12:44:25.340028+01
+7	auth	0005_alter_user_last_login_null	2018-09-13 12:44:25.595906+01
+8	auth	0006_require_contenttypes_0002	2018-09-13 12:44:25.637757+01
+9	auth	0007_alter_validators_add_error_messages	2018-09-13 12:44:25.890996+01
+10	auth	0008_alter_user_username_max_length	2018-09-13 12:44:26.144469+01
+11	users	0001_initial	2018-09-13 12:44:27.065751+01
+12	admin	0001_initial	2018-09-13 12:44:27.729397+01
+13	admin	0002_logentry_remove_auto_add	2018-09-13 12:44:28.203952+01
+14	comments	0001_initial	2018-09-13 12:44:28.788715+01
+15	comments	0002_comment_user	2018-09-13 12:44:29.435934+01
+16	posts	0001_initial	2018-09-13 12:44:29.716033+01
+17	posts	0002_auto_20180913_1120	2018-09-13 12:44:31.976077+01
+18	sessions	0001_initial	2018-09-13 12:44:32.225096+01
+19	auth	0009_alter_user_last_name_max_length	2018-09-13 21:30:04.470383+01
+23	posts	0002_auto_20180926_0953	2018-09-26 09:55:44.265058+01
+24	users	0002_auto_20180926_1130	2018-09-26 11:31:17.256999+01
+25	users	0003_auto_20180926_1131	2018-09-26 11:31:17.303872+01
+26	users	0002_customuser_profile_pic	2018-09-26 11:35:24.806021+01
+27	users	0003_remove_customuser_profile_pic	2018-09-26 11:51:58.878437+01
+28	users	0003_auto_20180926_1158	2018-09-26 11:58:53.354376+01
+29	users	0002_auto_20180928_2350	2018-09-28 23:50:55.519144+01
+30	posts	0003_auto_20180928_2359	2018-09-29 00:02:15.518156+01
+31	users	0003_auto_20180929_0005	2018-09-29 00:05:23.282565+01
+\.
+
+
+--
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 31, true);
+
+
+--
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
+mpwwwa740vj7libcrrh1203ilnwgzvae	ZDc3NTBkMWE0NGUwNzNkNzg5NjUxM2I0NGRhOWVhZGMyYzViMTE4Yzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlZmVhZTE0ZDhiMDQxMDRlZWI3YzNkMzdlZmE2NjU3ZTYyYTBkYmU0In0=	2018-09-27 17:21:29.392129+01
+gmthyqjdanqydwcu4ykxto9l15kiy5b2	YmQ4MzNkN2Q4NzMyNmI3MjAwZWUxZTBlYzFmNTkwYjJlZDQxZDdkNDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjNjUwZDUxYTRjMmVlNzEwYjM3ZTJjYzBkMGI5ZjRlYTg0NDIwMTk2In0=	2018-09-28 09:02:54.795261+01
+6mvlyryxweuphlsy8kksab6vdk8lwic8	M2I1ODg1ZmIzOGQ2NDJmZWFmNWNkN2QxZGYzMWEyMTY1NDczYjdhZjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjIiLCJfYXV0aF91c2VyX2hhc2giOiI5YzUxMDMwMDM0MjIxNjdiYmQ4MmM4YTNhMDViYmMyZjE0YWY3N2Q0In0=	2018-09-28 12:47:49.309717+01
+z3zc8hphte0v49uroqmkskzclkz44cga	ZjczNzc1MzdkZmVlMDZlOTU3M2I0YWE3NzU4M2ZjOWEzY2M0YTVhNzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiYzY1MGQ1MWE0YzJlZTcxMGIzN2UyY2MwZDBiOWY0ZWE4NDQyMDE5NiIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2018-10-08 12:09:02.265765+01
+gu36e1hdaud23as1ybjmr48t7pmbwr5h	MDc2NDI4ZjI2MGZlY2FmNzRhNDQ4ZGUwOTFhMjZjY2VjNzM0MzU0Yjp7Il9hdXRoX3VzZXJfaWQiOiI3IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1MDY5NGNiMjM3NWJlZWQ2OWEyNzQ3YzJhYWNjN2ViMjhlNWViZDgzIn0=	2018-10-10 17:32:18.124301+01
+zwc6aniea08bi5pmctblqvg6ifiagsf9	NTkzNzVmM2QwY2MwODcwODY5M2Q1MzM0M2UyMjhiMWQxZThiNzhkZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxNmVkNjcyZTc1YjdkODM3MTBiMTZhNWIzMWE4YzY1YmNmOTBiZDVmIn0=	2018-10-13 09:30:05.096852+01
+\.
+
+
+--
+-- Data for Name: posts_post; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.posts_post (id, title, ipython, updated, "timestamp", tag, post_comments, big, content, image, image2, draft, user_id) FROM stdin;
+10	Automate outlook messages		2018-09-26 16:14:59.709657+01	2018-09-13 17:25:27.469704+01	AUTO3	0	f	empty	Microsoft-Outlook-Logo.jpg	outlook-2.jpg	f	1
+16	Modeling temperatures and sales		2018-09-26 16:07:52.522704+01	2018-09-13 17:27:11.525146+01	quandl	0	f	quandl	quandl-logo-social.png	quandl.png	f	1
+12	Imdb parser: building a recommender system		2018-09-26 16:14:59.750635+01	2018-09-13 17:26:06.093722+01	IMDB	0	f	empty	imdb_8LkenV1.png	imdbxxl_dTtsecL.jpg	f	1
+13	Building a recommender system Part II - scrape the reviews		2018-09-26 16:14:59.809602+01	2018-09-13 17:26:22.483657+01	IMDB	0	f	empty	imdb_duBPJPN.png	imdbxxl_vgJ76mt.jpg	f	1
+14	Building a recommender system Part III - pre-processing		2018-09-26 16:15:00.276334+01	2018-09-13 17:26:37.135988+01	IMDB	0	f	IMDB	imdb.png	imdbxxl.jpg	f	1
+15	Setting up AWS S3 as a repository for your static files		2018-09-26 16:15:00.395266+01	2018-09-13 17:26:55.368021+01	AWS, static files	0	f	AWS	amazons3.jpg	aws.jpg	f	1
+18	JIRA Series Part 1.3 - Exporting all issues from a JIRA project.		2018-09-26 16:15:01.295752+01	2018-09-13 17:28:15.169889+01	JIRA, Excel, REST	0	f	JIRA	jira_excel.jpg	jira_excel-big.jpg	f	1
+19	Classifying amazon reviews with NLTK's Naive Bayes		2018-09-26 16:15:01.320737+01	2018-09-13 17:28:50.551726+01	NLTK Naive Bayse	0	t	Bayse	kaggle.jpg	kaggle-big.jpg	f	1
+21	Building a gaming-bot with a custom neural network Part 1		2018-09-26 16:04:41.850342+01	2018-09-13 17:29:21.852105+01	Neural	0	f	Neural	neural_net_part1_small.jpg	neural_net_part1_big.jpg	f	1
+20	Identify sentiment from streams of Reddit comments and display it as a user interface on Django		2018-09-26 16:15:01.360715+01	2018-09-13 17:29:08.654863+01	Javascript Jquery reddit django web development dev	0	f	Javascript	reddit.jpg	reddit-big.jpg	f	1
+17	JIRA Series Part 1.2 - Exporting all issues from a JIRA project		2018-09-26 16:15:01.587585+01	2018-09-13 17:27:27.616275+01	JIRA, Excel, REST	0	f	JIRA	jira_excel_wGLyVgg.jpg	jira_excel-big_T3jwjED.jpg	f	1
+2	My first publication on Kaggle.com: Modeling recruitment decisions with scikit-learn		2018-09-26 16:14:56.725858+01	2018-09-13 17:22:51.723692+01	kaggle	0	t	empty	kaggle_nkYMdf0.jpg	kaggle-big_LN1XX2F.jpg	f	1
+3	Extract, clean and build automated reportings with JIRA's API		2018-09-26 16:14:56.791819+01	2018-09-13 17:23:18.699656+01	JIRA11	0	f	empty	jira_excel_3JkRwVe.jpg	jira_excel-big_BPZnE3e.jpg	f	1
+4	Linkedin parser: shortlist potential candidates into your recruitment pipeline		2018-09-26 16:14:57.744781+01	2018-09-13 17:23:58.90295+01	linkedinparser	0	f	empty	linkedin.png	linkedin-big.jpg	f	1
+5	Extracting and automating follow-up dashboards from JIRA		2018-09-26 16:14:57.793753+01	2018-09-13 17:24:14.486291+01	JIRA21	0	f	empty	jira_excel_9qcXlR0.jpg	jira_excel-big_NSIvtrm.jpg	f	1
+1	How to create a Word document from an Excel file		2018-09-26 16:17:11.108634+01	2018-09-13 17:22:03.181248+01	WORDEXCEL	0	f	empty	word_excel.jpg	word_excel-big.jpg	f	1
+6	Mass update custom date fields with JIRA's API		2018-09-26 16:14:57.85272+01	2018-09-13 17:24:28.903049+01	JIRA31	0	f	empty	jira_excel_E23yb8W.jpg	jira_excel-big_3LnIUOb.jpg	f	1
+22	Tryout		2018-09-27 02:37:58.04221+01	2018-09-13 17:29:38.407216+01	Tryout	0	f	Tryout			t	1
+7	Hosting, developing and deploying your website for free with Django and Heroku		2018-09-26 16:14:57.859716+01	2018-09-13 17:24:44.537853+01	heroku	0	f	empty	heroku-rs.jpg	heroku-big.jpg	f	1
+8	Generate a timestamp and a name signature with a hotkey		2018-09-26 16:14:58.476364+01	2018-09-13 17:24:59.803508+01	AUTO1	0	f	empty	practicalpython4_4FU1eug.png	practicalpython-big_fg1Pm1V.jpg	f	1
+9	Bug report and Windows scheduler		2018-09-26 16:14:58.576307+01	2018-09-13 17:25:13.846771+01	AUTO2	0	f	empty	practicalpython4.png	practicalpython-big.jpg	f	1
+11	Hosting, developing and deploying your website for free with Django and Raspberry PI		2018-09-28 23:03:34.901088+01	2018-09-13 17:25:43.017791+01	pi	0	f	empty	raspi.png	raspi2.jpg	f	1
+47	Publish your own article on PythonBots		2018-09-30 14:24:33.794543+01	2018-09-14 09:02:29.867693+01	Web development	3	f	blablabla about my `code` blablabla about my code \r\nblablabla about my `code` \r\nblablabla about my `code` \r\nblablabla about my `code` \r\nblablabla about my `code` \r\n\r\n### Heading 1\r\n\r\n    def search_import_file():\r\n        liste=[] # list with the file names without the .png extension\r\n        for file in os.listdir(os.path.join(os.getcwd(),'"database'", '"processed'")):\r\n            if os.path.isdir(os.path.join(os.getcwd(),'"database'",'"processed'",file)) is False and (os.path.splitext(file)[1] == ''.png''):\r\n                liste.append(os.path.splitext(file)[0])\r\n        return liste\r\n\r\n### Heading 2\r\n\r\n    def classify_rarity_images():\r\n    counter = 0\r\n    images = create_image_instance_list()\r\n    for image in images:\r\n        if classify_rarity_image(image) is True:\r\n            counter+=1\r\n    print(counter/len(images)*100,''% of images were correctly predicted'')\r\n\r\n\r\n![enter image description here][1]\r\n\r\n\r\n![enter image description here][2]\r\n\r\n\r\n![enter image description here][3]\r\n\r\n\r\n  [1]: https://comidoc.com/wp-content/uploads/2017/07/Try-Django-1.11-Python-Web-Development-3.jpg\r\n  [2]: https://codersdiaries.com/wp-content/uploads/2017/11/Python.png\r\n  [3]: https://image.slidesharecdn.com/djangoboot-121114091104-phpapp02/95/python-django-ttt-7-638.jpg"	computerico-small.jpg	computerico-big.jpg	f	2
+\.
+
+
+--
+-- Name: posts_post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.posts_post_id_seq', 47, true);
+
+
+--
+-- Data for Name: posts_post_post_likes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.posts_post_post_likes (id, post_id, customuser_id) FROM stdin;
+\.
+
+
+--
+-- Name: posts_post_post_likes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.posts_post_post_likes_id_seq', 1, false);
+
+
+--
+-- Data for Name: posts_post_post_views; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.posts_post_post_views (id, post_id, customuser_id) FROM stdin;
+1	47	1
+2	21	1
+3	20	1
+4	47	9
+5	47	8
+\.
+
+
+--
+-- Name: posts_post_post_views_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.posts_post_post_views_id_seq', 5, true);
+
+
+--
+-- Data for Name: users_customuser; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users_customuser (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, bio, profile_pic, birth_date, location) FROM stdin;
+2	pbkdf2_sha256$100000$85YoHjb2eDnN$nwz0yUNpotH0Wx0UDI00x+uJYwBsBXDlbWQyiH6ZFHM=	2018-09-26 16:15:35.115353+01	f	hp5	Waz	Insky	h@h.com	f	t	2018-09-14 09:00:41.292316+01		\N	\N	
+7	pbkdf2_sha256$100000$O8JSWnZFhWUS$tmssbokGAkQ90ywYae7G8Vjmm0ZbQJh7zPA/EbdinOw=	2018-09-26 17:32:18.060019+01	f	hp4	Joao Da	Santos	hprattdo@gmail.com	f	t	2018-09-26 17:32:08.942371+01		\N	\N	
+9	pbkdf2_sha256$30000$B7F4cF3FPgY0$h/9C2+GbXg2OwYxcJ7UiwphCya/yG9I98IaXwTTuiJU=	2018-09-30 14:23:07.467932+01	f	hp8	Hugo	Wazinsky	hprattdo@g.com	f	t	2018-09-30 14:23:00.154921+01		avatar2.png	\N	
+8	pbkdf2_sha256$30000$IvbYJXKw8yTa$PkdqbYR72FvYo/Fs744a2PI9Wc++uZbtYytE4nV2TvU=	2018-09-30 14:24:16.326009+01	f	hp3	Joao Da	Santos	hprattdo@gmail.com	f	t	2018-09-28 23:53:01.161096+01		j_ZPMxPzB.png	\N	
+1	pbkdf2_sha256$30000$F6QBudh3HYFD$wxF5In99X3SKs/RfHpg4wfC75HZ1QpkDcxOyk7pSaFw=	2018-09-30 14:31:16.89943+01	t	hp			h@h.com	t	t	2018-09-13 17:21:05.703711+01		\N	\N	
+\.
+
+
+--
+-- Data for Name: users_customuser_groups; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users_customuser_groups (id, customuser_id, group_id) FROM stdin;
+\.
+
+
+--
+-- Name: users_customuser_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_customuser_groups_id_seq', 1, false);
+
+
+--
+-- Name: users_customuser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_customuser_id_seq', 9, true);
+
+
+--
+-- Data for Name: users_customuser_user_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users_customuser_user_permissions (id, customuser_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: users_customuser_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_customuser_user_permissions_id_seq', 1, false);
+
+
+--
+-- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group
+    ADD CONSTRAINT auth_group_name_key UNIQUE (name);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_group_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_0cd325b0_uniq UNIQUE (group_id, permission_id);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_permission_id_0cd325b0_uniq UNIQUE (group_id, permission_id);
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group
+    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_permission auth_permission_content_type_id_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_01ab375a_uniq UNIQUE (content_type_id, codename);
+
+
+--
+-- Name: auth_permission auth_permission_content_type_id_codename_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_codename_01ab375a_uniq UNIQUE (content_type_id, codename);
+
+
+--
+-- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comments_comment comments_comment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments_comment
+    ADD CONSTRAINT comments_comment_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_content_type django_content_type_app_label_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_content_type
+    ADD CONSTRAINT django_content_type_app_label_76bd3d3b_uniq UNIQUE (app_label, model);
+
+
+--
+-- Name: django_content_type django_content_type_app_label_model_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_content_type
+    ADD CONSTRAINT django_content_type_app_label_model_76bd3d3b_uniq UNIQUE (app_label, model);
+
+
+--
+-- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_content_type
+    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_migrations
+    ADD CONSTRAINT django_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_session
+    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+
+
+--
+-- Name: posts_post posts_post_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post
+    ADD CONSTRAINT posts_post_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts_post_post_likes posts_post_post_likes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_likes
+    ADD CONSTRAINT posts_post_post_likes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts_post_post_likes posts_post_post_likes_post_id_customuser_id_f5bc66ba_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_likes
+    ADD CONSTRAINT posts_post_post_likes_post_id_customuser_id_f5bc66ba_uniq UNIQUE (post_id, customuser_id);
+
+
+--
+-- Name: posts_post_post_likes posts_post_post_likes_post_id_f5bc66ba_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_likes
+    ADD CONSTRAINT posts_post_post_likes_post_id_f5bc66ba_uniq UNIQUE (post_id, customuser_id);
+
+
+--
+-- Name: posts_post_post_views posts_post_post_views_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_views
+    ADD CONSTRAINT posts_post_post_views_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts_post_post_views posts_post_post_views_post_id_046aa57c_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_views
+    ADD CONSTRAINT posts_post_post_views_post_id_046aa57c_uniq UNIQUE (post_id, customuser_id);
+
+
+--
+-- Name: posts_post_post_views posts_post_post_views_post_id_customuser_id_046aa57c_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_views
+    ADD CONSTRAINT posts_post_post_views_post_id_customuser_id_046aa57c_uniq UNIQUE (post_id, customuser_id);
+
+
+--
+-- Name: users_customuser_groups users_customuser_groups_customuser_id_76b619e3_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_groups_customuser_id_76b619e3_uniq UNIQUE (customuser_id, group_id);
+
+
+--
+-- Name: users_customuser_groups users_customuser_groups_customuser_id_group_id_76b619e3_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_groups_customuser_id_group_id_76b619e3_uniq UNIQUE (customuser_id, group_id);
+
+
+--
+-- Name: users_customuser_groups users_customuser_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_customuser users_customuser_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser
+    ADD CONSTRAINT users_customuser_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_user_pe_customuser_id_permission_7a7debf6_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_user_pe_customuser_id_permission_7a7debf6_uniq UNIQUE (customuser_id, permission_id);
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_user_permissions_customuser_id_7a7debf6_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_user_permissions_customuser_id_7a7debf6_uniq UNIQUE (customuser_id, permission_id);
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_customuser users_customuser_username_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser
+    ADD CONSTRAINT users_customuser_username_key UNIQUE (username);
+
+
+--
+-- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_group_name_a6ea08ec_like ON public.auth_group USING btree (name varchar_pattern_ops);
+
+
+--
+-- Name: auth_group_permissions_0e939a4f; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_group_permissions_0e939a4f ON public.auth_group_permissions USING btree (group_id);
+
+
+--
+-- Name: auth_group_permissions_8373b171; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_group_permissions_8373b171 ON public.auth_group_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_group_permissions_group_id_b120cbf9; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON public.auth_group_permissions USING btree (group_id);
+
+
+--
+-- Name: auth_group_permissions_permission_id_84c5c92e; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON public.auth_group_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_permission_417f1b1c; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_permission_417f1b1c ON public.auth_permission USING btree (content_type_id);
+
+
+--
+-- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX auth_permission_content_type_id_2f476e4b ON public.auth_permission USING btree (content_type_id);
+
+
+--
+-- Name: comments_comment_417f1b1c; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX comments_comment_417f1b1c ON public.comments_comment USING btree (content_type_id);
+
+
+--
+-- Name: comments_comment_content_type_id_72fd5dbe; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX comments_comment_content_type_id_72fd5dbe ON public.comments_comment USING btree (content_type_id);
+
+
+--
+-- Name: comments_comment_e8701ad4; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX comments_comment_e8701ad4 ON public.comments_comment USING btree (user_id);
+
+
+--
+-- Name: comments_comment_user_id_a1db4881; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX comments_comment_user_id_a1db4881 ON public.comments_comment USING btree (user_id);
+
+
+--
+-- Name: django_admin_log_417f1b1c; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_admin_log_417f1b1c ON public.django_admin_log USING btree (content_type_id);
+
+
+--
+-- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_admin_log_content_type_id_c4bce8eb ON public.django_admin_log USING btree (content_type_id);
+
+
+--
+-- Name: django_admin_log_e8701ad4; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_admin_log_e8701ad4 ON public.django_admin_log USING btree (user_id);
+
+
+--
+-- Name: django_admin_log_user_id_c564eba6; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_admin_log_user_id_c564eba6 ON public.django_admin_log USING btree (user_id);
+
+
+--
+-- Name: django_session_de54fa62; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_session_de54fa62 ON public.django_session USING btree (expire_date);
+
+
+--
+-- Name: django_session_expire_date_a5c62663; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_session_expire_date_a5c62663 ON public.django_session USING btree (expire_date);
+
+
+--
+-- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session USING btree (session_key varchar_pattern_ops);
+
+
+--
+-- Name: posts_post_e8701ad4; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_e8701ad4 ON public.posts_post USING btree (user_id);
+
+
+--
+-- Name: posts_post_post_likes_721e74b0; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_post_likes_721e74b0 ON public.posts_post_post_likes USING btree (customuser_id);
+
+
+--
+-- Name: posts_post_post_likes_customuser_id_b6ee5273; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_post_likes_customuser_id_b6ee5273 ON public.posts_post_post_likes USING btree (customuser_id);
+
+
+--
+-- Name: posts_post_post_likes_f3aa1999; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_post_likes_f3aa1999 ON public.posts_post_post_likes USING btree (post_id);
+
+
+--
+-- Name: posts_post_post_likes_post_id_1aa82189; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_post_likes_post_id_1aa82189 ON public.posts_post_post_likes USING btree (post_id);
+
+
+--
+-- Name: posts_post_post_views_721e74b0; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_post_views_721e74b0 ON public.posts_post_post_views USING btree (customuser_id);
+
+
+--
+-- Name: posts_post_post_views_customuser_id_ecf6f554; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_post_views_customuser_id_ecf6f554 ON public.posts_post_post_views USING btree (customuser_id);
+
+
+--
+-- Name: posts_post_post_views_f3aa1999; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_post_views_f3aa1999 ON public.posts_post_post_views USING btree (post_id);
+
+
+--
+-- Name: posts_post_post_views_post_id_015ac429; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_post_views_post_id_015ac429 ON public.posts_post_post_views USING btree (post_id);
+
+
+--
+-- Name: posts_post_user_id_a4f40dc7; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX posts_post_user_id_a4f40dc7 ON public.posts_post USING btree (user_id);
+
+
+--
+-- Name: users_customuser_groups_0e939a4f; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_groups_0e939a4f ON public.users_customuser_groups USING btree (group_id);
+
+
+--
+-- Name: users_customuser_groups_721e74b0; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_groups_721e74b0 ON public.users_customuser_groups USING btree (customuser_id);
+
+
+--
+-- Name: users_customuser_groups_customuser_id_958147bf; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_groups_customuser_id_958147bf ON public.users_customuser_groups USING btree (customuser_id);
+
+
+--
+-- Name: users_customuser_groups_group_id_01390b14; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_groups_group_id_01390b14 ON public.users_customuser_groups USING btree (group_id);
+
+
+--
+-- Name: users_customuser_user_permissions_721e74b0; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_user_permissions_721e74b0 ON public.users_customuser_user_permissions USING btree (customuser_id);
+
+
+--
+-- Name: users_customuser_user_permissions_8373b171; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_user_permissions_8373b171 ON public.users_customuser_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: users_customuser_user_permissions_customuser_id_5771478b; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_user_permissions_customuser_id_5771478b ON public.users_customuser_user_permissions USING btree (customuser_id);
+
+
+--
+-- Name: users_customuser_user_permissions_permission_id_baaa2f74; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_user_permissions_permission_id_baaa2f74 ON public.users_customuser_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: users_customuser_username_80452fdf_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_customuser_username_80452fdf_like ON public.users_customuser USING btree (username varchar_pattern_ops);
+
+
+--
+-- Name: auth_group_permissions auth_group_permiss_permission_id_84c5c92e_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permiss_permission_id_84c5c92e_fk_auth_permission_id FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissio_permission_id_84c5c92e_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_b120cbf9_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_permission auth_permiss_content_type_id_2f476e4b_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permiss_content_type_id_2f476e4b_fk_django_content_type_id FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_2f476e4b_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: comments_comment comments_com_content_type_id_72fd5dbe_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments_comment
+    ADD CONSTRAINT comments_com_content_type_id_72fd5dbe_fk_django_content_type_id FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: comments_comment comments_comment_content_type_id_72fd5dbe_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments_comment
+    ADD CONSTRAINT comments_comment_content_type_id_72fd5dbe_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: comments_comment comments_comment_user_id_a1db4881_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments_comment
+    ADD CONSTRAINT comments_comment_user_id_a1db4881_fk_users_customuser_id FOREIGN KEY (user_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_content_type_id_c4bce8eb_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_content_type_id_c4bce8eb_fk_django_content_type_id FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_content_type_id_c4bce8eb_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_users_customuser_id FOREIGN KEY (user_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: posts_post_post_likes posts_post_post_l_customuser_id_b6ee5273_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_likes
+    ADD CONSTRAINT posts_post_post_l_customuser_id_b6ee5273_fk_users_customuser_id FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: posts_post_post_likes posts_post_post_like_customuser_id_b6ee5273_fk_users_cus; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_likes
+    ADD CONSTRAINT posts_post_post_like_customuser_id_b6ee5273_fk_users_cus FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: posts_post_post_likes posts_post_post_likes_post_id_1aa82189_fk_posts_post_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_likes
+    ADD CONSTRAINT posts_post_post_likes_post_id_1aa82189_fk_posts_post_id FOREIGN KEY (post_id) REFERENCES public.posts_post(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: posts_post_post_views posts_post_post_v_customuser_id_ecf6f554_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_views
+    ADD CONSTRAINT posts_post_post_v_customuser_id_ecf6f554_fk_users_customuser_id FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: posts_post_post_views posts_post_post_view_customuser_id_ecf6f554_fk_users_cus; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_views
+    ADD CONSTRAINT posts_post_post_view_customuser_id_ecf6f554_fk_users_cus FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: posts_post_post_views posts_post_post_views_post_id_015ac429_fk_posts_post_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post_post_views
+    ADD CONSTRAINT posts_post_post_views_post_id_015ac429_fk_posts_post_id FOREIGN KEY (post_id) REFERENCES public.posts_post(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: posts_post posts_post_user_id_a4f40dc7_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts_post
+    ADD CONSTRAINT posts_post_user_id_a4f40dc7_fk_users_customuser_id FOREIGN KEY (user_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser__customuser_id_5771478b_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser__customuser_id_5771478b_fk_users_customuser_id FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_groups users_customuser__customuser_id_958147bf_fk_users_customuser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser__customuser_id_958147bf_fk_users_customuser_id FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_groups users_customuser_gro_customuser_id_958147bf_fk_users_cus; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_gro_customuser_id_958147bf_fk_users_cus FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_groups users_customuser_groups_group_id_01390b14_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_groups
+    ADD CONSTRAINT users_customuser_groups_group_id_01390b14_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_u_permission_id_baaa2f74_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_u_permission_id_baaa2f74_fk_auth_permission_id FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_use_customuser_id_5771478b_fk_users_cus; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_use_customuser_id_5771478b_fk_users_cus FOREIGN KEY (customuser_id) REFERENCES public.users_customuser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_customuser_user_permissions users_customuser_use_permission_id_baaa2f74_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_customuser_user_permissions
+    ADD CONSTRAINT users_customuser_use_permission_id_baaa2f74_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

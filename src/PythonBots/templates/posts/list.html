@@ -1,0 +1,481 @@
+{% extends "base.html" %}
+
+    {% block head %}
+    {% load static i18n %}
+
+    
+
+  <div id="popUp">
+    <div id="close" class="close"><i class="fa fa-times"></i></div>
+    <div id="new"><span>{% trans "JOIN THE BOTS!" %}</span></div>
+    <h2>{% trans "Join the PythonBots blog so that you can create, edit, comment and get notified whenever articles are added." %}</h2>
+<a href="{{ language.code }}/{% trans 'users' %}/login" class="button-3d" style="margin-left: 17%;">
+    <span>{% trans "Login/Signup" %} </span>
+</a>
+  </div> 
+
+
+
+{% endblock %}
+
+{% block subhead %}
+
+
+
+
+
+    <div class="panel-group" id="accordion">
+
+    <div class="pa">
+      <div class="pa" style="height: 53.48;">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" style="padding-left: 25;height: 60; padding-top: 13;" 
+          onmouseover="this.style.background='#e8e6e6';" onmouseout="this.style.background='#ffffff00';">
+          <i class="fas fa-book-open"></i> {% trans "Categories" %} </a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">      
+        <li><a href="?q=JIRA#">{% trans "JIRA" %}</a></li><br/>
+        <li><a href="?q=Practical+Python#">{% trans "Practical Python" %}</a></li><br/>
+        <li><a href="?q=Parser#">{% trans "Scraping" %}</a></li><br/>
+
+      </div>
+      </div>
+    </div>
+
+
+    <div class="reddit-pannel">
+      <div class="reddit-pannel"  style="height: 53.48;">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" style="padding-left: 25;height: 60; padding-top: 13;" 
+          onmouseover="this.style.background='#e8e6e6';" onmouseout="this.style.background='#ffffff00';">
+          <i class="fas fa-trophy"></i> {% trans "Top 5 on Reddit" %} </a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body">
+
+
+    <div id="article" style="float: left;width: 300;top: 23;left: 55;">
+      <img src="{% static 'images/expand.ico' %}" style="height: 2%;width: 7%;position: absolute;right: 20;" data-toggle="modal" href="#redditModal"id="expand"
+      onClick="closeNav()"></img>
+        <div class="article-data">
+
+    <div class="ajaxProgress" style="display:none;">
+      <img src="{% static 'images/loading.gif' %}" alt="Blog Image"></div>
+          <a href="" style="padding-left: 0;color: black;"><h4 class="title" id="fill-article" style="padding-left: 20;padding-bottom: 10; width:80%;" ></h4></a>
+          <h6 style="padding-left:20; width:85%;" id="fill-article-likes"> </h6>
+          <h6 style="padding-left:20; width:85%;" id="fill-article-date"> </h6>
+
+          <!-- {% for obj in object_list %} -->
+          <h6 style="padding-left:20; width:85%;" id="fill-article-comments" href=""> </h6>
+          <h6 style="padding-left:20; width:85%;" id="fill-classification"> </h6>
+          <!-- {% endfor %} -->
+          <h6 onClick="onClick()" style="padding-left:20; width:85%;" id="clicks"> {% trans "Next article" %} </h6>
+          <h6 onClick="onClick_com()" style="padding-left:20; width:85%;" id="clicks_com">{% trans "Next comment" %}  </h6>
+          <h6 onClick="onClick_class()" style="padding-left:20; width:85%;" id="fill-classification"> {% trans "Compute the classification" %} </h6>
+
+          
+
+        </div>
+        </div><!-- article-info -->
+
+        </div>
+      </div>
+      </div>
+    
+
+    <div class="famous-pannel">
+      <div class="famous-pannel"  style="height: 53.48;">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" style="padding-left: 25;height: 60; padding-top: 13;" 
+          onmouseover="this.style.background='#e8e6e6';" onmouseout="this.style.background='#ffffff00';">
+          <i class="fas fa-quote-right"></i> {% trans "Random Famous Quote" %} </a>
+        </h4>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body">
+
+
+    <div id="quote" style="float: left;width: 300;top: 23;left: 55;">
+        <div class="blog-info">
+
+    <div class="ajaxProgress" style="display:none;">
+      <img src="{% static 'images/loading.gif' %}" alt="Blog Image"></div>
+          <h4 class="title" id="fill-famous-quote" style="padding-left: 20;padding-bottom: 10; width:80%;"></h4>
+          <h6 style="padding-left:30; width:85%;" id="fill-famous-author">- </h6>
+<!--           <div class="blog-image-banner" style="width: 80%;padding-left: 10%;" >
+
+                <div class="middle">
+                                    <span class="middle" style="width: 20%;left: 40%;top: 40%;opacity: 1;">
+
+                    <img src= "{% static 'images/refresh.png' %}" style="position: absolute;width: 50;opacity: 0.6;top: 100;left: 80;">
+
+                    <img id="blank-picture" src= "{% static 'images/white.png' %}" style="position: absolute;width: 400;opacity: 0.3;"></span>
+
+                </div>
+                <img src="" id="fill-picture" alt="Blog Image">
+
+        </div> -->
+        </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+    <div class="pan">
+      <div class="pa"  style="height: 53.48;">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" style="padding-left: 25;height: 60; padding-top: 13;" 
+          onmouseover="this.style.background='#e8e6e6';" onmouseout="this.style.background='#ffffff00';">
+          <i class="fas fa-quote-left"></i> {% trans "Random Movie Quote" %}</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+
+
+    <div id="quote" style="float: left;width: 300;top: 23;left: 55;">
+        <div class="blog-info">
+
+    <div class="ajaxProgress" style="display:none;">
+      <img src="{% static 'images/loading.gif' %}" alt="Blog Image"></div>
+          <h4 class="title" id="fill-quote" style="padding-left: 20;padding-bottom: 10; width:80%;"></h4>
+          <h6 style="padding-left:30; width:85%;" id="fill-author">- </h6>
+          <div class="blog-image-banner" style="width: 80%;padding-left: 10%;" >
+
+                <div class="middle">
+                                    <span class="middle" style="width: 20%;left: 40%;top: 40%;opacity: 1;">
+
+                    <img src= "{% static 'images/refresh.png' %}" style="position: absolute;width: 50;opacity: 0.6;top: 100;left: 80;">
+
+                    <img id="blank-picture" src= "{% static 'images/white.png' %}" style="position: absolute;width: 400;opacity: 0.3;"></span>
+
+                </div>
+                <img src="" id="fill-picture" alt="Blog Image">
+
+        </div><!-- blog-info -->
+        </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+  </div>
+
+{% endblock %}
+
+{% block subsubhead %}
+
+    <div class="src-area" style="z-index:50;">
+
+    <form>
+        <button class="src-btn" type="submit"><i style="position: relative;"class="ion-ios-search-strong"></i></button>
+        <input class="src-input" type="text" id="q" onfocus="this.value=''" placeholder="{% trans 'Search posts' %}" value='{{ request.GET.q }}' name='q' >
+    </form>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+<script type="text/javascript" src="{% static 'layout-1/js/loadgo.js' %}"></script>
+
+
+
+
+
+
+
+
+<div id="redditModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="width: 5000;"><img src="{% static 'images/reddit-log.png' %}" style="height: 8%;width: 18%;">Top 5 on Reddit</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="width:40;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>{% trans "The 5 most liked tech articles on reddit right now are the following" %} </p>
+
+        <div class="ajaxProgress" style="display:none;">
+          <img src="{% static 'images/loading.gif' %}" alt="Blog Image"></div>
+              <div class="modal-body-title">
+              <h2 style="padding-left:55; width:85%;" id="fill-article2" href=""> </h2> <i class="fas fa-angle-double-right"  id="modal-body-title" onClick="onClick()" ></i> <i class="fas fa-angle-double-left"  id="modal-body-title2" onClick="onClick_previous()"></i>
+              </div>
+
+          <h6 style="padding-left:55; width:85%;padding-top: 10;" id="fill-article-likes2"> </h6>
+          <h6 style="padding-left:55; width:85%;" id="fill-article-date2"> </h6>
+
+              <div class="modal-body-comments" style="height:400;padding-left:55;padding-top: 20">
+                <i class="fas fa-caret-right"  id="modal-body-comments" onClick="onClick_com()" ></i> <i class="fas fa-caret-left" id="modal-body-comments2"  onClick="onClick_com_previous()" ></i>
+              
+              <h3 style="padding-left:55; width:85%;" id="fill-article-comments2" href=""> </h3>
+              </div>
+          <h3 style="padding-left:55; width:85%;" id="fill-classification2"> </h3> 
+
+
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="right: 50;">Close</button>
+            <div class="ajaxProgress_small" style="display:none;"><img src="{% static 'img/Rolling-1s-16px.gif' %}" onClick="onClick_class()" style="position:absolute;right: 40;bottom: 40;height: 16;width: 16;"><!-- Rolling-1s-16px.gif --></div>
+          <img src="{% static 'img/tick.gif' %}" id="tick" style="position:absolute;right: 20;bottom: 40;height: 80;width: 100;">
+
+
+          <img src="{% static 'images/fx-sign.png' %}" id="fx-sign" onClick="onClick_class()" style="position:absolute;right: 40;bottom: 40;height: 16;width: 16;">
+
+            </div>
+
+
+
+
+          
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+
+
+<div class="container" style="    background: white;    box-shadow: 1px 1px 10px grey;top:50px">
+<br>
+<div class="row">
+<div class="col-lg-8 col-md-12">
+
+  <main role="main">
+   {% load static%}
+        <div class="blog-image-banner"><img src="{% static 'images/pybot2.jpg' %}" alt="Blog Image"></div>
+                   <br></br>
+
+    <div class="jumbotron">
+{% if user.is_authenticated %}
+<h4>{% trans "You are connected as: " %}{{ user }}</h4>
+{% endif %}
+        <p>{% trans "Welcome to PythonBots, a blog for data science with Python. I'll be posting articles around Data Science, Automation, Machine Learning and Web Development here so if you're a technology enthusiast or just looking for a practical tutorial make sure to stick around." %}</p>
+      <div class="col-sm-10 mx-auto">
+            <div class="container" >
+                 </div></div></main>
+
+
+
+
+    <section class="blog-area section">
+
+
+
+      <div class="row">
+
+
+        {% for obj in object_list %}
+
+            {% if obj.big == True %}
+
+
+        <div class="col-lg-8 col-md-12" style="z-index: 1;position: relative;"  >
+          <div class="card h-100">
+            <div class="single-post post-style-2">
+              {% if obj.image %}
+              <div class="blog-image" id="test" style="z-index: 1;position: relative;">
+                <img src="{{ obj.image.url }}" alt="Blog Image" 
+                onClick="location.href='{{obj.get_absolute_url}}';">
+              </div>
+                {% endif %}
+              <div class="blog-info">
+
+                <h6 class="pre-title"><a href="#"><b>{% trans "COMPETITION" %}</b></a></h6>
+
+                <h4 class="title"><a href="{{ obj.get_absolute_url }}"><b>{{ obj.title }} {% if obj.draft == True %}{% trans "(Draft)" %}{% endif %}</b></a></h4>
+
+                <p>{{ obj.content }}</p>
+
+                <div class="avatar-area">
+                {% if obj.user.profile_pic %}
+                  <a class="avatar" href="#"><img src= "{{ obj.user.profile_pic.url }}" alt="Profile Image"></a>
+                  {% endif %}
+                  <div class="right-area">
+                    <br>
+                    <a class="name" href="#"><b>{{ obj.user.get_full_name }}</b></a>
+                    <h6 class="date" href="#" style="font-size: 0.8rem;">{% trans "on" %} {{ obj.timestamp }}</h6>
+                  </div>
+                </div> 
+                <ul class="post-footer" style="top:435px;">
+                  <li><a href="{{ obj.get_like_url }}"><i class="ion-heart"></i>{{obj.post_likes.count}}</a></li>
+                  <li><a href="{{ obj.get_absolute_url }}"><i class="ion-chatbubble"></i>{{obj.post_comments}}</a></li>
+                  <li><a href="{{ obj.get_absolute_url }}"><i class="ion-eye"></i>{{obj.post_views.count}}</a></li>
+                </ul>
+
+              </div><!-- blog-right -->
+
+            </div><!-- single-post extra-blog -->
+
+          </div><!-- card -->
+        </div><!-- col-lg-8 col-md-12 -->
+
+
+
+            {% else %}
+
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100">
+            <div class="single-post post-style-1">
+              
+
+              {% if obj.image %}
+              <div class="blog-image" id="test"><img src="{{ obj.image.url }}" alt="Blog Image" 
+                onClick="location.href='{{obj.get_absolute_url}}';">
+                <div class="middle"></div>
+                  <!-- <span class="middle"><img src= "{% static 'images/click.png' %}"></span> -->
+                </div>
+                {% endif %}
+                {% if obj.user.profile_pic %}
+              <a class="avatar" href="#"><img src= "{{ obj.user.profile_pic.url }}" alt="Profile Image"></a>
+                {% endif %}
+              <div class="blog-info">
+                <h4 class="title"><a href="{{ obj.get_absolute_url }}"><b>{{ obj.title }} {% if obj.draft == True %}{% trans "(Draft)" %}{% endif %}</b></a></h4>
+
+                <ul class="post-footer" style="top:435px;">
+                  <li><a href="{{ obj.get_like_url }}"><i class="ion-heart"></i>{{obj.post_likes.count}}</a></li>
+                  <li><a href="{{ obj.get_absolute_url }}"><i class="ion-chatbubble"></i>{{obj.post_comments}}</a></li>
+                  <li><a href="{{ obj.get_absolute_url }}"><i class="ion-eye"></i>{{obj.post_views.count}}</a></li>
+                </ul>
+              </div><!-- blog-info -->
+
+            </div><!-- single-post -->
+
+          </div><!-- card -->
+        </div><!-- col-lg-4 col-md-6 -->
+
+            {% endif %}
+
+
+        {% endfor %}
+      </div> <!-- row -->
+
+
+ 
+
+
+  </section><!-- section -->
+      
+  <ul class="pagination">
+
+    {% if object_list.has_previous %}
+      <li><a href="?page={{ object_list.previous_page_number }}">1</a></li>
+    {% else %}
+      <li class="active "><span>1</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if object_list.number == i %}
+        <li class="active "><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+
+      {% endif %}
+    {% endfor %}
+    {% if object_list.has_next %}
+      <li><a href="?page={{ object_list.next_page_number }}">2</a></li>
+      <li><a href="?page={{ object_list.next_page_number }}">3</a></li>
+
+    {% else %}
+      <li class="active "><span>2</span></li>
+      <li class="disabled"><span>3</span></li>
+    {% endif %}
+  </ul>
+    
+</div>
+
+
+
+<div class="col-lg-4 col-md-12">
+  <!-- ****** Blog Sidebar ****** -->
+  <div class="blog-sidebar mt-5 mt-lg-0">
+
+    <!-- Single Widget Area -->
+    <div class="single-widget-area popular-post-widget">
+      <div class="widget-title text-center">
+      <p style="    font-size: 2rem;padding-bottom: 20px;padding-top: 20px;">{% trans "Most Popular Posts" %}</p>
+      </div>
+      {% for obj in popular_list %}
+      <!-- Single Popular Post -->
+      <div class="single-widget-area add-widget text-center">
+        <div class="add-widget-area">
+          {% if obj.image %}
+          <img src="{{ obj.image.url }}" alt="Blog Image" style="border-radius: 30px" >
+          <div class="add-text">
+            <div class="yummy-table">
+            {% endif %}
+            <h2 onClick="location.href='{{obj.get_absolute_url}}';">{{ obj.title }} {% if obj.draft == True %}(Draft){% endif %}</h2>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+<!-- Single Widget Area -->
+<div class="single-widget-area add-widget text-center">
+  <div class="add-widget-area">
+  <img src="{% static 'images/pythonbook.jpg' %}" style="border-radius: 50px;width: 50%;">
+    <div class="add-text">
+      <div class="yummy-table2">
+        <div class="yummy-table-cell">
+        <h2 style="color:white;">How I learned Python</h2>
+        <a href="https://www.amazon.fr/Learning-Python-5ed-Mark-Lutz/dp/1449355730/ref=sr_1_2?ie=UTF8&qid=1540745946&sr=8-2&keywords=python" class="add-btn"><h4 style="line-height: inherit">Learn more</h4></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<script>
+  $(document).ready(function(){
+
+    
+    // playDemo('py_loader', 2, 0.3);
+    //redirect to page
+
+    // $(document).scroll(function() {
+    // var scroll = $(this).scrollTop();
+    // if (scroll <= 150) {
+    // $("#popUp").css("margin-left", "0px");
+    // }
+    // });
+
+
+    // $("#close").click(function() {
+    //  $("#popUp").css("margin-left", "-425px");
+    // });
+
+    var i = 0;
+    $(".single-post").hover(function() {
+      $(this).addClass("big");
+      }, function() {
+          $(this).addClass("norm");
+    });
+});
+
+</script>
+
+
+
+
+
+
+
+
+{% endblock %}
+

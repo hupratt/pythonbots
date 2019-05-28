@@ -1,0 +1,735 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-26 22:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+
+#: .\PythonBots\settings\pi.py:214
+msgid "English"
+msgstr "Anglais"
+
+#: .\PythonBots\settings\pi.py:215
+msgid "German"
+msgstr "Allemand"
+
+#: .\PythonBots\settings\pi.py:216
+msgid "French"
+msgstr "Français"
+
+#: .\PythonBots\settings\pi.py:217
+msgid "Portuguese"
+msgstr "Portugais"
+
+#: .\PythonBots\templates\base.html:98 .\posts\static\500.html:6
+#: .\posts\static\app_index.html:9 
+#: .\posts\static\auth\user\change_password.html:13
+#: .\posts\static\base.html:56 .\posts\static\change_form.html:18
+#: .\posts\static\change_list.html:31
+#: .\posts\static\delete_confirmation.html:13
+#: .\posts\static\delete_selected_confirmation.html:13
+#: .\posts\static\invalid_setup.html:6 .\posts\static\object_history.html:6
+msgid "Home"
+msgstr "Accueil"
+
+#: .\PythonBots\templates\base.html:99
+msgid "Subscribe"
+msgstr "S'abonner"
+
+#: .\PythonBots\templates\base.html:184 .\PythonBots\templates\base.html:238
+msgid "Enter your email"
+msgstr "Indiquez votre adresse e-mail"
+
+#: .\PythonBots\templates\base.html:100 .\posts\static\login.html:61
+msgid "Log in"
+msgstr "S'identifier"
+
+#: .\PythonBots\templates\base.html:101 .\posts\static\base.html:46
+msgid "Log out"
+msgstr "Se déconnecter"
+
+#: .\PythonBots\templates\base.html:102
+msgid "Create a new post"
+msgstr "Créer un article"
+
+#: .\PythonBots\templates\base.html:103 .\PythonBots\templates\base.html:133
+msgid "Settings"
+msgstr "Paramètres"
+
+#: .\PythonBots\templates\base.html:154
+msgid "Close"
+msgstr "Fermer"
+
+#: .\PythonBots\templates\base.html:155
+msgid "Save changes"
+msgstr "Sauvegarder les modifications"
+
+#: .\PythonBots\templates\base.html:167
+msgid "Subscribe to the newsletter"
+msgstr "S'abonner à la liste de diffusion"
+
+#: .\PythonBots\templates\base.html:171
+msgid "Join the newsletter to get notified whenever a new article is posted"
+msgstr "Souscrivez à la liste de diffusion pour être notifié lorsqu'un article est publié"
+
+#: .\PythonBots\templates\base.html:206
+msgid "ABOUT THIS PAGE"
+msgstr "À PROPOS DE CETTE PAGE"
+
+#: .\PythonBots\templates\base.html:208
+msgid "The code powering this website is available"
+msgstr "Le code qui alimente ce site web est disponible "
+
+#: .\PythonBots\templates\base.html:208
+msgid "on github"
+msgstr "sur github"
+
+#: .\PythonBots\templates\base.html:225
+msgid "SUBSCRIBE"
+msgstr "S'ABONNER"
+
+#: .\PythonBots\templates\base.html:226
+msgid "Subscribe to the newsletter here"
+msgstr "S'abonner à la liste de diffusion"
+
+#: .\PythonBots\templates\base.html:256
+msgid "ABOUT ME"
+msgstr "À PROPOS DE L'AUTEUR"
+
+#: .\PythonBots\templates\base.html:258
+msgid ""
+"Project coordinator and technology enthusiast. Wecome to my very first "
+"website!"
+msgstr "Coordinateur de projets et techno-enthousiaste. Bienvenue sur mon premier site web "
+
+#: .\PythonBots\templates\base.html:271
+msgid "THE DESIGN"
+msgstr "LA CONCEPTION DE LA PAGE"
+
+#: .\PythonBots\templates\list.html:10
+msgid "JOIN THE BOTS!"
+msgstr "REJOIGNEZ NOUS!"
+
+#: .\PythonBots\templates\list.html:402
+msgid "Most Popular Posts"
+msgstr "Les Plus Populaires"
+
+#: .\PythonBots\templates\base.html:116
+msgid "My Profile"
+msgstr "Mon Profil"
+
+#: .\PythonBots\templates\base.html:273
+msgid ""
+"The HTML markups and the CSS were freely distributed by Bona. Visit her @"
+msgstr "Le code HTML et le CSS ont été distribués par Bona. Visitez la @"
+
+#: .\PythonBots\templates\posts\detail.html:8
+msgid "Edit this post"
+msgstr "Modifier cet article"
+
+#: .\PythonBots\templates\posts\detail.html:8
+msgid "view"
+msgstr "visualisation"
+
+#: .\PythonBots\templates\posts\detail.html:8
+msgid "views"
+msgstr "visualisations"
+
+#: .\PythonBots\templates\posts\detail.html:8
+msgid "comment"
+msgstr "commentaire"
+
+#: .\PythonBots\templates\posts\detail.html:8
+msgid "comments"
+msgstr "commentaires"
+
+#: .\PythonBots\templates\posts\detail.html:8
+msgid "likes"
+msgstr "j'aime"
+
+#: .\PythonBots\templates\posts\detail.html:8
+msgid "like"
+msgstr "j'aime"
+
+#: .\PythonBots\templates\posts\detail.html:9
+msgid "Delete this post"
+msgstr "Effacer cet article"
+
+#: .\PythonBots\templates\posts\detail.html:49
+#: .\PythonBots\templates\posts\list.html:283
+#: .\PythonBots\templates\posts\list.html:329
+msgid "(Draft)"
+msgstr "(Brouillon)"
+
+#: .\PythonBots\templates\posts\detail.html:87
+msgid "Comments"
+msgstr "Commentaires"
+
+#: .\PythonBots\templates\posts\detail.html:112
+msgid "ago"
+msgstr "il y a"
+
+#: .\PythonBots\templates\posts\detail.html:101 .\PythonBots\templates\posts\list.html:300
+msgid "on"
+msgstr "le"  
+
+#: .\PythonBots\templates\posts\detail.html:131
+msgid "Submit"
+msgstr "Envoyer"
+
+#: .\PythonBots\templates\posts\edit.html:17
+msgid "your article"
+msgstr "votre article"
+
+#: .\PythonBots\templates\posts\edit.html:31
+msgid "Title"
+msgstr "Titre"
+
+#: .\PythonBots\templates\posts\edit.html:38
+msgid "Tag(s)"
+msgstr "Étiquette(s)"
+
+#: .\PythonBots\templates\posts\edit.html:45
+msgid "Article (.html)"
+msgstr "Article (.html)"
+
+#: .\PythonBots\templates\posts\edit.html:57
+msgid "Thumbnail"
+msgstr "Vignette"
+
+#: .\PythonBots\templates\posts\edit.html:66
+msgid "Article image"
+msgstr "Image de l'article"
+
+#: .\PythonBots\templates\posts\edit.html:75
+msgid "Is draft?"
+msgstr "Est un brouillon?"
+
+#: .\PythonBots\templates\posts\edit.html:83
+msgid "Big post format?"
+msgstr "Grand format?"
+
+#: .\PythonBots\templates\posts\edit.html:91
+msgid "Content"
+msgstr "Contenu"
+
+#: .\PythonBots\templates\posts\edit.html:108 .\PythonBots\templates\users\login_signup_page.html:154
+msgid "Do you have an account already?"
+msgstr "Avez-vous déjà un compte?"
+
+#: .\PythonBots\templates\posts\edit.html:110 .\PythonBots\templates\users\login_signup_page.html:156
+msgid "Log in Here"
+msgstr "S'identifier ici"
+
+#: .\PythonBots\templates\posts\list.html:10
+msgid ""
+"Join the PythonBots blog so that you can create, edit, comment and get "
+"notified whenever articles are added."
+msgstr "Rejoignez le blog PythonBots afin de créer, modifier, commenter et être"
+"notifié lorsqu'un article est additionné."
+
+#: .\PythonBots\templates\posts\list.html:12
+msgid "Login/Signup"
+msgstr "S'identifier/S'inscrire"
+
+#: .\PythonBots\templates\posts\list.html:32
+msgid "Categories"
+msgstr "Catégories"
+
+#: .\PythonBots\templates\posts\list.html:37
+msgid "JIRA"
+msgstr "JIRA"
+
+#: .\PythonBots\templates\posts\list.html:38
+msgid "Practical Python"
+msgstr "Python Pratique"
+
+#: .\PythonBots\templates\posts\list.html:39
+msgid "Scraping"
+msgstr "Scraping"
+
+#: .\PythonBots\templates\posts\list.html:51
+msgid "Top 5 on Reddit"
+msgstr "Le top 5 sur Reddit"
+
+#: .\PythonBots\templates\posts\list.html:73
+msgid "Next article"
+msgstr "Article suivant"
+
+#: .\PythonBots\templates\posts\list.html:74
+msgid "Next comment"
+msgstr "Commentaire suivant"
+
+#: .\PythonBots\templates\posts\list.html:75
+msgid "Compute the classification"
+msgstr "Calculer la classification"
+
+#: .\PythonBots\templates\posts\list.html:92
+msgid "Random Famous Quote"
+msgstr "Citation d'une célébrité"
+
+#: .\PythonBots\templates\posts\list.html:132
+msgid "Random Movie Quote"
+msgstr "Citation d'un film"
+
+#: .\PythonBots\templates\posts\list.html:199
+msgid "The 5 most liked tech articles on reddit right now are the following"
+msgstr "Les 5 articles techno les plus aimés du moment sont les suivants"
+
+#: .\PythonBots\templates\posts\list.html:248
+msgid "You are connected as: "
+msgstr "Vous êtes connecté sur le compte: "
+
+#: .\PythonBots\templates\posts\list.html:250
+msgid ""
+"Welcome to PythonBots, a blog for data science with Python. I'll be posting "
+"articles around Data Science, Automation, Machine Learning and Web "
+"Development here so if you're a technology enthusiast or just looking for a "
+"practical tutorial make sure to stick around."
+msgstr ""
+"Bienvenue sur PythonBots, un blog sur la Science Des Données avec Python. Je publierai ici "
+"des articles concernant la Science Des Données, l'Automatisation, l'Apprentissage Automatique et le Développement "
+"Web du coup si vous êtes à l'affût des dernières nouveautés ou si vous cherchez "
+"des guides pratiques vous êtes au bon endroit."
+
+#: .\PythonBots\templates\posts\list.html:281
+msgid "COMPETITION"
+msgstr "COMPÉTITION"
+
+#: .\PythonBots\templates\posts\list.html:180
+msgid "Search posts"
+msgstr "Filtrer les articles"
+
+#: .\PythonBots\urls.py:35
+msgid "posts/"
+msgstr "articles/"
+
+#: .\PythonBots\urls.py:36
+msgid "users/"
+msgstr "utilisateurs/"
+
+#: .\PythonBots\templates\base.html:101 .\PythonBots\templates\base.html:100
+msgid "users"
+msgstr "utilisateurs"
+
+#: .\PythonBots\templates\base.html:102 
+msgid "posts"
+msgstr "articles"
+
+#: .\posts\static\404.html:4 .\posts\static\404.html:8
+msgid "Page not found"
+msgstr "Page introuvable"
+
+#: .\posts\static\404.html:10
+msgid "We're sorry, but the requested page could not be found."
+msgstr "Désolé, la page demandée est introuvable"
+
+#: .\posts\static\500.html:7
+msgid "Server error"
+msgstr "Erreur du serveur"
+
+#: .\posts\static\500.html:11
+msgid "Server error (500)"
+msgstr "Erreur du serveur (500)"
+
+#: .\posts\static\500.html:14
+msgid "Server Error <em>(500)</em>"
+msgstr "Erreur du serveur <em>(500)</em>"
+
+#: .\posts\static\500.html:15
+msgid ""
+"There's been an error. It's been reported to the site administrators via "
+"email and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Une erreur s'est produite et a été communiquée aux administrateurs par email"
+"et devrait être résolue dans les plus brefs délais. Merci pour votre patience."
+
+#: .\posts\static\actions.html:4
+msgid "Run the selected action"
+msgstr "Lancer l'appli"
+
+#: .\posts\static\actions.html:4
+msgid "Go"
+msgstr ""
+
+#: .\posts\static\actions.html:10
+msgid "Click here to select the objects across all pages"
+msgstr ""
+
+#: .\posts\static\actions.html:10
+#, python-format
+msgid "Select all %(total_count)s %(module_name)s"
+msgstr ""
+
+#: .\posts\static\actions.html:12
+msgid "Clear selection"
+msgstr ""
+
+#: .\posts\static\auth\user\add_form.html:6
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
+msgstr ""
+
+#: .\posts\static\auth\user\add_form.html:8
+msgid "Enter a username and password."
+msgstr ""
+
+#: .\posts\static\auth\user\change_password.html:17
+#: .\posts\static\auth\user\change_password.html:54
+#: .\posts\static\base.html:44
+msgid "Change password"
+msgstr ""
+
+#: .\posts\static\auth\user\change_password.html:27
+#: .\posts\static\change_form.html:47 .\posts\static\change_list.html:58
+#: .\posts\static\login.html:21
+msgid "Please correct the error below."
+msgstr ""
+
+#: .\posts\static\auth\user\change_password.html:27
+#: .\posts\static\change_form.html:47 .\posts\static\change_list.html:58
+#: .\posts\static\login.html:21
+msgid "Please correct the errors below."
+msgstr ""
+
+#: .\posts\static\auth\user\change_password.html:31
+#, python-format
+msgid "Enter a new password for the user <strong>%(username)s</strong>."
+msgstr ""
+
+#: .\posts\static\base.html:30
+msgid "Welcome,"
+msgstr "Bienvenue,"
+
+#: .\posts\static\base.html:35
+msgid "View site"
+msgstr "Accéder au site"
+
+#: .\posts\static\base.html:40
+msgid "Documentation"
+msgstr "Documentation"
+
+#: .\posts\static\base_site.html:3
+msgid "Django site admin"
+msgstr ""
+
+#: .\posts\static\base_site.html:6
+msgid "Django administration"
+msgstr "L'administration Django"
+
+#: .\posts\static\change_form.html:21 .\posts\static\change_list.html:49
+#, python-format
+msgid "Add %(name)s"
+msgstr "Additionner %(name)s"
+
+#: .\posts\static\change_form.html:33 .\posts\static\object_history.html:10
+msgid "History"
+msgstr "Historique"
+
+#: .\posts\static\change_form.html:35
+#: .\posts\static\edit_inline\stacked.html:14
+#: .\posts\static\edit_inline\tabular.html:36
+msgid "View on site"
+msgstr "Accéder au site"
+
+#: .\posts\static\change_list.html:69
+msgid "Filter"
+msgstr "Filtrer"
+
+#: .\posts\static\change_list_results.html:17
+msgid "Remove from sorting"
+msgstr ""
+
+#: .\posts\static\change_list_results.html:18
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr ""
+
+#: .\posts\static\change_list_results.html:19
+msgid "Toggle sorting"
+msgstr ""
+
+#: .\posts\static\delete_confirmation.html:17
+#: .\posts\static\related_widget_wrapper.html:23
+#: .\posts\static\submit_line.html:6
+msgid "Delete"
+msgstr "Effacer"
+
+#: .\posts\static\delete_confirmation.html:23
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+
+#: .\posts\static\delete_confirmation.html:30
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+
+#: .\posts\static\delete_confirmation.html:37
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
+"All of the following related items will be deleted:"
+msgstr ""
+
+#: .\posts\static\delete_confirmation.html:39
+#: .\posts\static\delete_selected_confirmation.html:38
+msgid "Objects"
+msgstr ""
+
+#: .\posts\static\delete_confirmation.html:46
+#: .\posts\static\delete_selected_confirmation.html:49
+msgid "Yes, I'm sure"
+msgstr ""
+
+#: .\posts\static\delete_confirmation.html:47
+#: .\posts\static\delete_selected_confirmation.html:50
+msgid "No, take me back"
+msgstr ""
+
+#: .\posts\static\delete_selected_confirmation.html:16
+msgid "Delete multiple objects"
+msgstr ""
+
+#: .\posts\static\delete_selected_confirmation.html:22
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would result in deleting related "
+"objects, but your account doesn't have permission to delete the following "
+"types of objects:"
+msgstr ""
+
+#: .\posts\static\delete_selected_confirmation.html:29
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would require deleting the following "
+"protected related objects:"
+msgstr ""
+
+#: .\posts\static\delete_selected_confirmation.html:36
+#, python-format
+msgid ""
+"Are you sure you want to delete the selected %(objects_name)s? All of the "
+"following objects and their related items will be deleted:"
+msgstr ""
+
+#: .\posts\static\edit_inline\stacked.html:12
+#: .\posts\static\edit_inline\tabular.html:34 .\posts\static\index.html:37
+#: .\posts\static\related_widget_wrapper.html:9
+msgid "Change"
+msgstr ""
+
+#: .\posts\static\edit_inline\tabular.html:20
+msgid "Delete?"
+msgstr ""
+
+#: .\posts\static\filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
+#: .\posts\static\includes\object_delete_summary.html:2
+msgid "Summary"
+msgstr ""
+
+#: .\posts\static\index.html:20
+#, python-format
+msgid "Models in the %(name)s application"
+msgstr ""
+
+#: .\posts\static\index.html:31 .\posts\static\related_widget_wrapper.html:16
+msgid "Add"
+msgstr ""
+
+#: .\posts\static\index.html:47
+msgid "You don't have permission to edit anything."
+msgstr ""
+
+#: .\posts\static\index.html:55
+msgid "Recent actions"
+msgstr ""
+
+#: .\posts\static\index.html:56
+msgid "My actions"
+msgstr ""
+
+#: .\posts\static\index.html:60
+msgid "None available"
+msgstr ""
+
+#: .\posts\static\index.html:74
+msgid "Unknown content"
+msgstr ""
+
+#: .\posts\static\invalid_setup.html:12
+msgid ""
+"Something's wrong with your database installation. Make sure the appropriate "
+"database tables have been created, and make sure the database is readable by "
+"the appropriate user."
+msgstr ""
+
+#: .\posts\static\login.html:37
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: .\posts\static\login.html:57
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: .\posts\static\object_history.html:22
+msgid "Date/time"
+msgstr ""
+
+#: .\posts\static\object_history.html:23
+msgid "User"
+msgstr ""
+
+#: .\posts\static\object_history.html:24
+msgid "Action"
+msgstr ""
+
+#: .\posts\static\object_history.html:38
+msgid ""
+"This object doesn't have a change history. It probably wasn't added via this "
+"admin site."
+msgstr ""
+
+#: .\posts\static\pagination.html:10 .\posts\static\search_form.html:9
+msgid "Show all"
+msgstr ""
+
+#: .\posts\static\pagination.html:11 .\posts\static\submit_line.html:3
+msgid "Save"
+msgstr ""
+
+#: .\posts\static\popup_response.html:3
+msgid "Popup closing..."
+msgstr ""
+
+#: .\posts\static\related_widget_wrapper.html:8
+#, python-format
+msgid "Change selected %(model)s"
+msgstr ""
+
+#: .\posts\static\related_widget_wrapper.html:15
+#, python-format
+msgid "Add another %(model)s"
+msgstr ""
+
+#: .\posts\static\related_widget_wrapper.html:22
+#, python-format
+msgid "Delete selected %(model)s"
+msgstr ""
+
+#: .\posts\static\search_form.html:7
+msgid "Search"
+msgstr ""
+
+#: .\posts\static\search_form.html:9
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\posts\static\search_form.html:9
+#, python-format
+msgid "%(full_result_count)s total"
+msgstr ""
+
+#: .\posts\static\submit_line.html:8
+msgid "Save as new"
+msgstr ""
+
+#: .\posts\static\submit_line.html:9
+msgid "Save and add another"
+msgstr "Sauvegarder et additionner un autre"
+
+#: .\posts\static\submit_line.html:10
+msgid "Save and continue editing"
+msgstr "Sauvegarder et continuer"
+
+
+
+
+
+
+
+
+#: .\PythonBots\templates\users\login_signup_page.html:18
+msgid "Login to your account"
+msgstr "Accédez à votre compte"
+
+#: .\PythonBots\templates\users\login_signup_page.html:19
+msgid "Forgot password?"
+msgstr "Avez-vous oublié votre mot de passe?"
+
+#: .\PythonBots\templates\users\login_signup_page.html:36
+msgid "Username or Email"
+msgstr "Nom d'utilisateur ou e-mail"
+
+#: .\PythonBots\templates\users\login_signup_page.html:41
+msgid "password"
+msgstr "mot de passe"
+
+#: .\PythonBots\templates\users\login_signup_page.html:69
+msgid "I Don't have an account!"
+msgstr "Je n'ai pas de compte"
+
+#: .\PythonBots\templates\users\login_signup_page.html:70
+msgid "Sign Up Here"
+msgstr "S'inscrire ici"
+
+#: .\PythonBots\templates\users\login_signup_page.html:86
+msgid "Sign Up"
+msgstr "S'inscrire"
+
+#: .\PythonBots\templates\users\login_signup_page.html:99
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\PythonBots\templates\users\login_signup_page.html:106
+msgid "Email"
+msgstr "E-mail"
+
+#: .\PythonBots\templates\users\login_signup_page.html:108
+msgid "Email Address"
+msgstr "Adresse e-mail"
+
+#: .\PythonBots\templates\users\login_signup_page.html:113 .\users\login_signup_page.html:115
+msgid "First Name"
+msgstr "Prénom"
+
+#: .\PythonBots\templates\users\login_signup_page.html:119 .\users\login_signup_page.html:121
+msgid "Last Name"
+msgstr "Nom"
+
+#: .\PythonBots\templates\users\login_signup_page.html:127
+msgid "Profile Picture"
+msgstr "Photo de profil"
+
+#: .\PythonBots\templates\users\login_signup_page.html:136 .\users\login_signup_page.html:138
+msgid "Password"
+msgstr "Mot de passe"

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<br>
+<div class="jumbotron">
+	<div class="col-sm-8 mx-auto">
+		<h1>Registration form</h1>
+		<br>
+		<!--<hr class="my-4"> cute line -->
+		<form method = 'POST'>
+		{% csrf_token %}
+		{{ form.as_p }} <!-- render as paragraph tags --> 
+		<button type="submit" >Submit</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,332 @@
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120665426-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-120665426-1');
+  </script>
+
+  {% if GOOGLE_ANALYTICS_PROPERTY_ID %}
+  {% include "path/to/your/ga.html" %}
+  {% endif %}
+
+  {% load static i18n %}
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.5.0/marked.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.min.js"></script> -->
+
+
+
+  <script type="text/javascript" src="{% static 'layout-1/js/base.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layout-1/js/list.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layout-1/js/read.js' %}"></script>
+
+
+  <link href="{% static 'layout-1/css/styles.css' %}" rel="stylesheet">
+  <link href="{% static 'layout-1/css/responsive.css' %}" rel="stylesheet">
+  <link href="{% static 'common-css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'common-css/blurry.load.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+
+  <link href="{% static 'common-css/ionicons.css' %}" rel="stylesheet">
+  <script type="text/javascript" src="{% static 'js/blurme.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/blurry.load.js' %}"></script>
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/H2.png' %}">
+
+  <title>{% block head_title %}Python Bots{% endblock head_title %}</title>
+
+
+
+  <header style="    z-index: 10;
+    position: relative;">
+
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-info" role="alert">
+      <ul class="messages">
+        <span class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </span>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+
+
+    </ul>
+    </div>
+
+    {% endif %}
+
+    {% block markdown %}
+    {% endblock %}
+
+    {% block subsubhead %}
+
+    <div class="src-area" style="background-color: #7fff0000;"></div>
+    {% endblock %}
+
+    <div id='py_load_div'
+      style="background:#cfecf4;height: 100%;    z-index: 2000;   /*cfecf4 292b2c91*/position: fixed;width: 100%;">
+      <img src="{% static 'images/pybot2_loading.jpg' %}" style="height: 250;width: 200;display: block;margin-left: auto;
+        margin-right: auto;margin-top: 140;" id="py_loader">
+      <div class="row" style="margin-top:10px;">
+        <div class="col-md-12 text-center">
+          <div id="demo-progress-2" style="margin-bottom:10px;font-size:16px;opacity:0;font-weight:bold;">0 %</div>
+          <div id="demo-msg-2">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container-fluid position-relative no-side-padding" style="z-index:20;">
+
+
+      <span style="font-size: 30;cursor: pointer;color: gray;padding-left: 20;padding-top: 4;"
+        onclick="openNav()">&#9776;</span>
+
+
+
+      <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+
+
+      <div id="mySidenav" style="display:none;" class="sidenav" style="width: 320px;">
+
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <ul class="main-menu visible-on-click" id="main-menu">
+
+
+
+          <li style="width: 100%"><a href="/"><i class="fas fa-home" aria-hidden="true"></i> {% trans "Home" %}</a></li>
+          <li style="width: 100%"><a data-toggle="modal" href="#subscribeModal"><i class="fas fa-at"
+                aria-hidden="true"></i> {% trans "Subscribe" %}</a></li>
+          <li style="width: 100%"><a href="{{ language.code }}/{% trans 'users' %}/login"><i
+                class="fas fa-sign-in-alt"></i> {% trans "Log in" %}</a></li>
+          <li style="width: 100%"><a href="{{ language.code }}/{% trans 'users' %}/logout"><i
+                class="fas fa-sign-out-alt"></i> {% trans "Log out" %}</a></li>
+          <li style="width: 100%"><a href="{{ language.code }}/{% trans 'posts' %}/create"><i
+                class="fas fa-plus-square"></i> {% trans "Create a new post" %}</a></li>
+          <li style="width: 100%"><a href="{{ language.code }}/{% trans 'users' %}/profile"><i
+                class="far fa-user-circle"></i> {% trans "My Profile" %}</a></li>
+          <li style="width: 100%"><a style="position: absolute;bottom: 0; width: 320;" data-toggle="modal"
+              href="#settingsModal"><i class="fas fa-cog" aria-hidden="true"></i> {% trans "Settings" %}</a></li>
+
+
+          {% block subhead %}
+
+          {% endblock %}
+
+
+
+      </div>
+
+    </div><!-- conatiner -->
+
+
+
+
+  </header>
+
+  {% block head %}
+
+  {% endblock %}
+</head>
+
+<body>
+
+
+  <div id="settingsModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="width: 5000;">{% trans "Settings" %}</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="width:40;">&times;</button>
+
+        </div>
+        <div class="modal-body">
+          <form action='{% url "set_language" %}' method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ redirect_to }}">
+            <select name='language' id=''
+              style="height: 5%;width: 200;font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 26;color: gray;text-align: left;left: 21;border: none;">
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for language in languages %}
+              <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+              </option>
+              {% endfor %}
+
+            </select>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %} </button>
+          <button class="btn btn-primary">{% trans "Save changes" %} </button>
+          </form>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <div id="subscribeModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="width: 5000;">{% trans "Subscribe to the newsletter" %}</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="width:40;">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>{% trans "Join the newsletter to get notified whenever a new article is posted" %}</p>
+
+          <div class="input-area"
+            style="border: 0.5px solid rgba(0, 0, 0, 0.16);height: 50;    background-color: #e2e9e9cf;">
+            <form method='POST'>
+              {%csrf_token%}
+              <div class="form-group has-errors text-danger small">
+                {{error}}
+              </div>
+              <div class="form-group has-errors text-danger small">
+                {{form.error}}
+              </div>
+              <div class="form-group has-errors text-danger small">
+              </div>
+              <input id="subscribe" class="email-input"
+                style="width:350;height: 40;bottom: 23;background: #f0f8ff00;border-color: #00ffff00;    padding-left: 25;"
+                type="email" placeholder="{% trans 'Enter your email' %}" {{form.username}} </input> <button
+                style="height: 50;bottom: 17;background: #f0f8ff00;border-color: #f0f8ff00;" class="submit-btn"
+                type="submit"><i class="icon ion-ios-email-outline"></i></button>
+
+          </div>
+          </form>
+
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  {% block body %}
+
+  {% endblock %}
+
+</body>
+
+</div>
+<footer style="position: relative;top: 100px;">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-lg-3 col-md-3">
+        <div class="footer-section">
+          <h4 class="title"><b>{% trans "ABOUT THIS PAGE" %} </b></h4>
+
+          <p class="copyright"> {% trans "The code powering this website is available" %} <a
+              href="https://github.com/hupratt/pythonbots"> {% trans "on github" %} </a></p>
+          <li><a href="https://github.com/hupratt/pythonbots"><i class="github ion-social-github"></i></a></li>
+
+        </div><!-- footer-section -->
+      </div><!-- col-lg-4 col-md-6 -->
+
+
+
+
+
+
+
+      <div class="col-lg-3 col-md-3">
+        <div class="footer-section">
+
+          <h4 class="title"><b>{% trans "SUBSCRIBE" %}</b></h4>
+          <p>{% trans "Subscribe to the newsletter here" %} </p>
+          <div class="input-area">
+            <form method='POST'>
+              {%csrf_token%}
+              <div class="form-group has-errors text-danger small">
+                {{error}}
+              </div>
+              <div class="form-group has-errors text-danger small">
+                {{form.error}}
+              </div>
+              <div class="form-group has-errors text-danger small">
+              </div>
+              <input id="subscribe" class="email-input" style="height:50;" type="email"
+                placeholder="{% trans 'Enter your email' %}" {{form.username}} </input> <button style="height:50;"
+                class="submit-btn" type="submit"><i class="icon ion-ios-email-outline"></i></button>
+
+          </div>
+          </form>
+
+          <!-- <form>
+                  <input class="email-input" type="text" placeholder="Enter your email">
+                  <button class="submit-btn" type="submit"><i class="icon ion-ios-email-outline"></i></button>
+                </form> -->
+
+
+
+        </div><!-- footer-section -->
+      </div><!-- col-lg-4 col-md-6 -->
+
+      <div class="col-lg-3 col-md-3">
+        <div class="footer-section">
+          <h4 class="title"><b>{% trans "ABOUT ME" %}</b></h4>
+
+          <p>{% trans "Project coordinator and technology enthusiast. Wecome to my very first website!" %} </p>
+          <ul class="icons">
+            <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
+            <li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
+            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/hugo-pratt-24190860/"><i
+                  class="ion-social-linkedin-outline"></i></a></li>
+            <li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
+          </ul>
+        </div><!-- footer-section -->
+      </div><!-- col-lg-4 col-md-6 -->
+
+      <div class="col-lg-3 col-md-3">
+        <div class="footer-section">
+          <h4 class="title"><b>{% trans "THE DESIGN" %}</b></h4>
+
+          <p>{% trans "The HTML markups and the CSS were freely distributed by Bona. Visit her @" %} <a
+              href="https://colorlib.com" target="_blank"> Colorlib</a> </p>
+          <p><a href="https://colorlib.com/demo?theme=bona"> https://colorlib.com/demo?theme=bona</a></p>
+
+        </div><!-- footer-section -->
+      </div><!-- col-lg-4 col-md-6 -->
+
+
+    </div><!-- row -->
+</footer>
+
+
+
+</div>
+
+
+
+
+
+
+</html>
