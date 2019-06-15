@@ -32,8 +32,7 @@ timestamps {
 		stage ('Build') {
 			
 		    sh """ 
-			# sudo chown -R www-data:www-data $PROJECT
-			# cd $PROJECT
+
 			# sudo virtualenv -p python3 .
 			sudo chmod 770 $PYTHON_P
 			
