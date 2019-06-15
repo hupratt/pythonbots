@@ -10,9 +10,6 @@ timestamps {
 		stage ('Checkout') {
 			// checkout scm
 			sh """ 
-			# sudo chown -R jenkins:jenkins $PROJECT
-			# sudo tr -d '\r' < /home/ubuntu/Dev/PythonBots/Jenkinsfile > /home/ubuntu/Dev/PythonBots/Jenkinsfile.groovy
-			# sudo mv /home/ubuntu/Dev/PythonBots/Jenkinsfile.groovy /home/ubuntu/Dev/PythonBots/Jenkinsfile
 			cd $PROJECT
 			sudo git fetch --all
 			sudo git reset --hard origin/master
@@ -21,7 +18,7 @@ timestamps {
 		
 		stage ('Build') {
 			
-		    	sh """ 
+		    sh """ 
 			sudo chown -R www-data:www-data $PROJECT
 			cd $PROJECT
 			# sudo virtualenv -p python3 .
