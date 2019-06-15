@@ -10,6 +10,7 @@ timestamps {
 		stage ('Checkout') {
 			// checkout scm
 			sh """ 
+			sudo chown -R www-data:www-data $PROJECT
 			cd $PROJECT
 			sudo git fetch --all
 			sudo git reset --hard origin/master
@@ -19,8 +20,8 @@ timestamps {
 		stage ('Build') {
 			
 		    sh """ 
-			sudo chown -R www-data:www-data $PROJECT
-			cd $PROJECT
+			# sudo chown -R www-data:www-data $PROJECT
+			# cd $PROJECT
 			# sudo virtualenv -p python3 .
 			sudo chmod 770 $PYTHON_P
 			
