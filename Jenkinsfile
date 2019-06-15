@@ -5,18 +5,30 @@ timestamps {
 		def PROJECT="/home/ubuntu/Dev/PythonBots"
 		def PYTHON_P="$PROJECT/bin/python3.6"
 		def GET_SECRET="/var/lib/jenkins/run_vars_pbots.py"
+		def WORKSPACE="/var/lib/jenkins/workspace/PythonBots"
 		
 		
-		stage ('Checkout') {
-			// checkout scm
+		// stage ('Checkout') {
+		// 	// checkout scm
+		// 	sh """ 
+		// 	sudo chown -R www-data:www-data $PROJECT
+		// 	cd $PROJECT
+		// 	sudo git fetch --all
+		// 	sudo git reset --hard origin/master
+		// 	"""
+		// }
+		stage ('Replace') {
+
 			sh """ 
-			sudo chown -R www-data:www-data $PROJECT
-			cd $PROJECT
-			sudo git fetch --all
-			sudo git reset --hard origin/master
-			"""
-		}
-		
+
+			whoami
+			echo "moving jenkins workspace $WORKSPACE to the apache project location"
+			sudo service apache2 stop
+			sudo rm -rf $PROJECT
+			sudo cp -r $WORKSPACE $PROJECT
+
+            """ 
+        }	
 		stage ('Build') {
 			
 		    sh """ 
