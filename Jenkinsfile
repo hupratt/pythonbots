@@ -35,7 +35,7 @@ timestamps {
 
 			# sudo virtualenv -p python3 .
 			sudo chmod 770 $PYTHON_P
-			
+			cd $PROJECT
 			. bin/activate
 			echo 'which python are you running?'
 			which python
