@@ -117,7 +117,7 @@ WSGI_APPLICATION = 'PythonBots.wsgi.application'
 if os.environ.get('DJANGO_DEVELOPMENT') is not None:
     DATABASES = {
         'default': {
-            'ENGINE': os.environ.get('enginedb'),
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': os.environ.get('dbname_pbots'),
             'USER': os.environ.get('dbuser_pbots'),
             'PASSWORD': os.environ.get('dbpassword_pbots'),
@@ -129,11 +129,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ.get('dbname_pbots'),
-            'USER': os.environ.get('dbuser_pbots'),
-            'PASSWORD': os.environ.get('dbpassword_pbots'),
-            'HOST': os.environ.get('hostip'),
-            'PORT': os.environ.get('pnumber'),
+            'NAME': dbname_pbots,
+            'USER': dbuser_pbots,
+            'PASSWORD': dbpassword_pbots,
+            'HOST': hostip,
+            'PORT': pnumber,
         }
     }
 
