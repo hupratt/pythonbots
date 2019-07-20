@@ -129,11 +129,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': dbname_pbots,
-            'USER': dbuser_pbots,
-            'PASSWORD': dbpassword_pbots,
-            'HOST': hostip,
-            'PORT': pnumber,
+            'NAME': os.environ.get('dbname_pbots'),
+            'USER': os.environ.get('dbuser_pbots'),
+            'PASSWORD': os.environ.get('dbpassword_pbots'),
+            'HOST': os.environ.get('hostip'),
+            'PORT': os.environ.get('pnumber'),
         }
     }
 
