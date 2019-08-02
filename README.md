@@ -1,3 +1,3 @@
 PythonBots website build
 
-https://www.pythonbots.ml/
+https://www.pythonbots.site/
