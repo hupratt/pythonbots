@@ -47,9 +47,9 @@ for (x in labels) {
 
 					# sudo $PYTHON_P manage.py createcachetable cache_table
 
-					sudo $PYTHON_P manage.py makemigrations                  
+					# sudo $PYTHON_P manage.py makemigrations                  
 
-					sudo $PYTHON_P manage.py migrate                  
+					# sudo $PYTHON_P manage.py migrate                  
 					echo 'manage.py migrate done'
 					
 					# sudo django-admin manage.py compilemessages --settings=Portfolio.settings 
