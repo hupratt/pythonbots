@@ -45,6 +45,9 @@ if os.environ.get('DJANGO_DEVELOPMENT') is not None:
 
 ALLOWED_HOSTS = ['*']
 
+# load balancer config
+USE_X_FORWARDED_HOST = True
+
 
 # Application definition
 
