@@ -1,7 +1,5 @@
 # PythonBots web application 
 
-status: deprecated
-
 https://www.pythonbots.site/
 
 ## Architecture
