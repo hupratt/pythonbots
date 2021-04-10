@@ -43,7 +43,7 @@ DEBUG = False
 if os.environ.get('DJANGO_DEVELOPMENT') is not None:
     DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['pythonbots.craftstudios.eu']
 
 # load balancer config
 USE_X_FORWARDED_HOST = True
